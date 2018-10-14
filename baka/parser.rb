@@ -67,8 +67,10 @@ module Baka
         paragraphs = chapter_objs.select { |e| e.name = 'p' }
         paragraphs.each { |par| chapter.add_par!(par.text) }
 
-        chapter_objs.css('a.image').each do |link|
-          chapter.add_image!(link['href'], get_image(link['href']))
+        if $config['images'] == true
+          chapter_objs.css('a.image').each do |link|
+            chapter.add_image!(link['href'], get_image(link['href']))
+          end
         end
 
         result << chapter
