@@ -9,7 +9,7 @@ require 'open-uri'
 require 'uri'
 require "base64"
 
-require "mini_magick" if $config['images'] == true
+require "mini_magick" if $config['images'] && $config['compress_images']
 
 %w[tabi baka].each do |gem_name|
   Dir[__dir__+"/#{gem_name}/*.rb"].each{ |file| require file }
